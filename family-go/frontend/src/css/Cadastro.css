@@ -1,0 +1,125 @@
+:root {
+  --branco: #ffffff;
+  --branco-suave: #fef6f2;
+  --laranja: #fa7b17;
+  --verde-escuro: #229e49;
+  --marrom: #6d4c41;
+  --marrom-claro: #a1887f;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --borda-radius: 1.5rem;
+}
+
+/* Layout geral da tela */
+.tela-cadastro {
+  background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Logo no topo */
+.logo-container {
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+}
+
+/* Caixa do formulário */
+.cadastro-container {
+  background: white;
+  border-radius: var(--borda-radius);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: var(--sombra);
+}
+
+/* Formulário */
+.formulario-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rotulo {
+  font-weight: 600;
+  color: var(--marrom);
+  font-size: 0.9rem;
+}
+
+.entrada {
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--marrom-claro);
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.entrada:focus {
+  outline: none;
+  border-color: var(--laranja);
+}
+
+.opcao-mostrar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--marrom);
+  margin-top: 0.8rem;
+}
+
+.opcao-mostrar input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--verde);
+  cursor: pointer;
+}
+
+.opcao-mostrar label {
+  cursor: pointer;
+}
+
+.botao {
+  border: none;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botao-secundario {
+  background: linear-gradient(45deg, var(--verde), var(--verde-claro));
+  color: white;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .cadastro-container {
+    padding: 1.5rem;
+  }
+
+  .entrada {
+    padding: 0.7rem;
+  }
+}

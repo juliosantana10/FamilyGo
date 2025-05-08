@@ -1,0 +1,296 @@
+.desafio-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+    font-family: 'Nunito', sans-serif;
+    position: relative;
+  }
+  
+  .desafio-header {
+    background: linear-gradient(to right, #ff9966, #ff7043);
+    border-radius: 0 0 20px 20px;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .desafio-header h1 {
+    margin: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .desafio-header h1::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url();
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 8px;
+  }
+  
+  .desafio-subtitle {
+    margin: 10px 0 0;
+    font-size: 16px;
+    opacity: 0.9;
+  }
+  
+  .card-desafio {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    animation: aparecer 0.5s ease-out;
+    flex: 1;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 80px;
+  }
+  
+  .desafio-familiar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .desafio-familiar h2 {
+    color: #ff7043;
+    margin: 0 0 10px;
+    font-size: 22px;
+    text-align: center;
+  }
+  
+  .desafio-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff9e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ff7043;
+    overflow: hidden;
+  }
+  
+  .desafio-emoji {
+    font-size: 40px;
+  }
+  
+  .desafio-conteudo {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .desafio-icone {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .desafio-conteudo h3 {
+    color: #333;
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+  
+  .desafio-conteudo p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  .desafio-pontos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .pontos-valor {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff7043;
+  }
+  
+  .pontos-texto {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .desafio-acoes {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .botao-concluir, .botao-pular, .botao-voltar {
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .botao-concluir {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  .botao-concluir:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.3);
+  }
+  
+  .botao-pular {
+    background-color: #f0f0f0;
+    color: #666;
+    border: 1px solid #ddd;
+  }
+  
+  .botao-pular:hover {
+    background-color: #e4e4e4;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .botao-pular:active, .botao-concluir:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .botao-voltar {
+    background-color: #ff7043;
+    color: white;
+    border: none;
+  }
+  
+  .botao-voltar:hover {
+    background-color: #ff5722;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 112, 67, 0.3);
+  }
+  
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 112, 67, 0.3);
+    border-radius: 50%;
+    border-top-color: #ff7043;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  .loading-text {
+    margin-top: 15px;
+    color: #ff7043;
+    font-weight: bold;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .confetes {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 100;
+  }
+  
+  .confete {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--cor);
+    opacity: 0.7;
+    animation: cair 4s ease-in infinite;
+  }
+  
+  @keyframes cair {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  .sem-desafio {
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .sem-desafio p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .desafio-header h1 {
+      font-size: 22px;
+    }
+    
+    .botao-concluir, .botao-pular, .botao-voltar {
+      padding: 10px 20px;
+      font-size: 15px;
+    }
+    
+    .desafio-conteudo h3 {
+      font-size: 18px;
+    }
+    
+    .pontos-valor {
+      font-size: 28px;
+    }
+  }

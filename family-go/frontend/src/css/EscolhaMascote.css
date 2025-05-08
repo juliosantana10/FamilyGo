@@ -1,0 +1,116 @@
+.tela-mascote {
+    background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo-pequena {
+    max-width: 180px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .titulo-mascote {
+    color: var(--marrom);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+  }
+  
+  .opcoes-mascote {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .opcao-mascote {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    cursor: pointer;
+    border: 3px solid transparent;
+    box-shadow: var(--sombra);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  
+  .opcao-mascote:hover {
+    transform: translateY(-5px);
+  }
+  
+  .opcao-mascote.selecionado {
+    border-color: var(--laranja);
+    background-color: rgba(255, 123, 37, 0.05);
+  }
+  
+  .opcao-mascote img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .campo-nome-familia {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .entrada-nome-familia {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+  
+  .barra-progresso {
+    width: 100%;
+    max-width: 400px;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+  }
+  
+  .progresso {
+    height: 100%;
+    background: linear-gradient(to right, var(--laranja), var(--laranja-claro));
+    border-radius: 4px;
+  }
+  
+  .tela-mascote .botao-grande {
+    margin-top: 1rem;
+    min-width: 200px;
+  }
+  
+  @media (max-width: 768px) {
+    .opcoes-mascote {
+      gap: 1rem;
+    }
+    
+    .opcao-mascote {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .titulo-mascote {
+      font-size: 1.3rem;
+    }
+    
+    .opcoes-mascote {
+      gap: 0.8rem;
+    }
+    
+    .opcao-mascote {
+      width: 90px;
+      height: 90px;
+    }
+  }

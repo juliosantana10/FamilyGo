@@ -1,0 +1,282 @@
+.tela-cheia {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f9f9f7;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .tela-recompensa {
+    justify-content: space-between;
+    padding-bottom: 70px;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo-pequena {
+    height: 50px;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+  }
+  
+  .cabecalho-recompensa {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .titulo-recompensa {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #8B4513;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  .card-recompensa {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    color: #333;
+    overflow: hidden;
+  }
+  
+  .secao-pontos {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+  }
+  
+  .secao-pontos h2 {
+    font-size: 1.4rem;
+    color: #D2691E;
+    margin: 0 0 10px 0;
+  }
+  
+  .pontos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .pontos-valor {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #8B4513;
+  }
+  
+  .botao-editar {
+    background-color: #f9f9f7;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .botao-editar:hover {
+    background-color: #E0E0D1;
+    transform: scale(1.05);
+  }
+  
+  .icone-editar {
+    font-size: 1.2rem;
+  }
+  
+  .secao-fotos {
+    margin-bottom: 20px;
+  }
+  
+  .secao-fotos p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #555;
+    text-align: center;
+  }
+  
+  .grade-fotos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .slot-foto {
+    aspect-ratio: 1/1;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #F5F5DC;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .foto-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .botao-adicionar-foto {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #8B4513; 
+    background-color: rgba(139, 69, 19, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    color: #8B4513;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .botao-adicionar-foto:hover {
+    background-color: rgba(139, 69, 19, 0.2);
+    transform: scale(0.98);
+  }
+  
+  .secao-prazo {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .secao-prazo p {
+    margin: 0;
+  }
+  
+  .botao {
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  .botao-primario {
+    background-color: #D2691E;
+    color: white;
+  }
+  
+  .botao-primario:hover:not(:disabled) {
+    background-color: #C06014;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .botao-primario:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .botao-grande {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2rem;
+  }
+  
+  .botao:disabled {
+    background-color: #E0E0D1;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .tela-carregamento {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F5F5DC; }
+  
+  .logo-carregamento {
+    width: 120px;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  }
+  
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #8B4513; 
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .barra-navegacao {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #FFFFFF; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  @media (min-width: 768px) {
+    .tela-cheia {
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      min-height: 90vh;
+    }
+  
+    .barra-navegacao {
+      max-width: 500px;
+      margin: 0 auto;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .card-recompensa {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .titulo-recompensa {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .slot-foto:hover .botao-adicionar-foto {
+    background-color: rgba(139, 69, 19, 0.3);
+    transform: scale(1.02);
+  }
+  
+  .botao-primario:active {
+    transform: scale(0.98);
+  }
+  

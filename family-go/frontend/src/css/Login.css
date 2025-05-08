@@ -1,0 +1,114 @@
+.tela-login {
+    background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+  }
+  
+  .login-container {
+    background: white;
+    border-radius: var(--borda-radius);
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: var(--sombra);
+    margin-top: 1rem;
+  }
+  
+  .formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .formulario-login .campo-form {
+    margin-bottom: 0.2rem;
+  }
+  
+  .toggle-senha {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--marrom);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  
+  .toggle-senha:hover {
+    background-color: rgba(141, 110, 99, 0.1);
+  }
+  
+  .senha-container {
+    position: relative;
+  }
+  
+  .senha-container .entrada {
+    padding-right: 70px;
+  }
+  
+  .recuperar-senha {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -0.5rem;
+  }
+  
+  .link-recuperar {
+    color: var(--laranja);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  
+  .link-recuperar:hover {
+    text-decoration: underline;
+  }
+  
+  .opcoes-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .opcoes-login .botao {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .separador {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+    color: var(--marrom-claro);
+  }
+  
+  .separador::before,
+  .separador::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--marrom-claro);
+    opacity: 0.3;
+  }
+  
+  .separador-texto {
+    padding: 0 1rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 1.5rem;
+    }
+    
+    .toggle-senha {
+      font-size: 0.8rem;
+    }
+  }

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+:root {
+  --branco: #ffffff;
+  --branco-suave: #f9f9f7;
+  --laranja: #ff7b25;
+  --laranja-claro: #ff9a56;
+  --verde: #4caf50;
+  --verde-claro: #6abe6e;
+  --marrom: #8d6e63;
+  --marrom-claro: #bcaaa4;
+  --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --borda-radius: 12px;
+}
+
+body {
+  background: var(--branco-suave);
+  color: #333;
+}
+
+.tela-cheia {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.tela-centro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.tela-inicial {
+  background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+}
+
+.logo-container {
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  max-width: 240px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+}
+
+.mascote-container {
+  margin-bottom: 3rem;
+}
+
+.mascote-inicial {
+  max-width: 280px;
+  filter: drop-shadow(0 5px 10px rgba(141, 110, 99, 0.25));
+}
+
+.botao {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 8px rgba(255, 123, 37, 0.25);
+}
+
+.botao-primario {
+  background: linear-gradient(45deg, var(--laranja), var(--laranja-claro));
+  color: white;
+}
+
+.botao-grande {
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    max-width: 180px;
+  }
+  
+  .mascote-inicial {
+    max-width: 220px;
+  }
+  
+  .botao-grande {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    max-width: 150px;
+  }
+  
+  .mascote-inicial {
+    max-width: 180px;
+  }
+  
+  .botao-grande {
+    padding: 0.7rem 1.8rem;
+    font-size: 1rem;
+  }
+}
