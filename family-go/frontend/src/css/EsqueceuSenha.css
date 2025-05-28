@@ -1,0 +1,114 @@
+.tela-recuperar-senha {
+    background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .recuperar-senha-container {
+    background: white;
+    border-radius: var(--borda-radius);
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: var(--sombra);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .logo-container {
+    width: 120px;
+  }
+  
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .formulario-recuperar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .campo-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rotulo {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--marrom);
+  }
+  
+  .entrada {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--marrom-claro);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline-color: var(--laranja);
+  }
+  
+  .mensagem-erro {
+    color: #e63946;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+  }
+  
+  .mensagem-sucesso {
+    color: #2a9d8f;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+  }
+  
+  .botao-recuperar {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    background-color: var(--verde);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+  }
+  
+  .botao-recuperar:hover:not(:disabled) {
+    background-color: #1f8a3c;
+  }
+  
+  .botao-recuperar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .link-voltar {
+    color: var(--marrom);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  
+  .link-voltar:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 480px) {
+    .recuperar-senha-container {
+      padding: 1.5rem;
+      max-width: 90vw;
+    }
+  }
+  

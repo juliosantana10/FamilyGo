@@ -1,52 +1,47 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css';
+import '../css/SelecionarFamiliares.css';
+import logo from '../familyImagens/logo.png';
 
 function SelecionarFamiliares() {
-  const [familiares, setFamiliares] = useState([
-    { id: 1, nome: '', relacao: '' },
-    { id: 2, nome: '', relacao: '' }
-  ]);
+  const [familiares, setFamiliares] = useState([{ id: 1, nome: '', relacao: '' }]);
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const atualizarFamiliar = (id, campo, valor) => {
-    setFamiliares(familiares.map(familiar => 
-      familiar.id === id ? { ...familiar, [campo]: valor } : familiar
+    setFamiliares(familiares.map(f =>
+      f.id === id ? { ...f, [campo]: valor } : f
     ));
   };
 
   const addFamiliar = () => {
+    if (familiares.length >= 10) return;
     const novoId = Math.max(...familiares.map(f => f.id)) + 1;
     setFamiliares([...familiares, { id: novoId, nome: '', relacao: '' }]);
   };
 
   const removerFamiliar = (id) => {
-    if (familiares.length > 2) {
+    if (familiares.length > 1) {
       setFamiliares(familiares.filter(f => f.id !== id));
     }
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const incompletos = familiares.some(f => !f.nome || !f.relacao);
-    
     if (incompletos) {
       setErro('Por favor, preencha todos os campos.');
       return;
     }
-    
+
     try {
-      setErro('');
       setCarregando(true);
-      
+      setErro('');
       localStorage.setItem('familyGoFamiliares', JSON.stringify(familiares));
-      
       localStorage.setItem('familyGoUsuarioCadastrado', 'completo');
       navigate('/dashboard');
-    } catch (error) {
-      console.error('Erro ao salvar familiares:', error);
+    } catch (err) {
       setErro('Ocorreu um erro. Tente novamente.');
     } finally {
       setCarregando(false);
@@ -54,68 +49,61 @@ function SelecionarFamiliares() {
   };
 
   return (
-    <div className="tela-cheia tela-familiares">
-      <div className="logo-container">
-        <img src="/assets/images/logo.svg" alt="Family Go" className="logo-pequena" />
-      </div>
-      
-      <h1 className="titulo-familiares">
-        Quais familiares participarão da disputa?
-      </h1>
-      
-      <div className="lista-familiares">
-        {familiares.map((familiar, index) => (
-          <div key={familiar.id} className="familiar-form">
-            <h2 className="subtitulo-familiar">Pessoa {index + 1}</h2>
-            
-            <div className="campo-form">
-              <input
-                type="text"
-                className="entrada"
-                placeholder="Familiar"
-                value={familiar.nome}
-                onChange={(e) => atualizarFamiliar(familiar.id, 'nome', e.target.value)}
-              />
-            </div>
-            
-            <div className="campo-form">
-              <input
-                type="text"
-                className="entrada"
-                placeholder="Grau de Relação"
-                value={familiar.relacao}
-                onChange={(e) => atualizarFamiliar(familiar.id, 'relacao', e.target.value)}
-              />
-            </div>
-            
-            {familiares.length > 2 && (
-              <button 
-                type="button" 
-                className="botao-remover" 
-                onClick={() => removerFamiliar(familiar.id)}
+    <div className="sf-tela-familiares">
+      <img src={logo} alt="Logo Family Go" className="sf-logo" />
+      <h1 className="sf-titulo">Monte sua Equipe Familiar!</h1>
+
+      <div className="sf-lista">
+        {familiares.map((f, index) => (
+          <div className="sf-card-familiar cd-jump" key={f.id}>
+            <h2 className="sf-subtitulo">Familiar {index + 1}</h2>
+            <input
+              className="sf-input"
+              type="text"
+              placeholder="Nome"
+              value={f.nome}
+              onChange={e => atualizarFamiliar(f.id, 'nome', e.target.value)}
+            />
+            <input
+              className="sf-input"
+              type="text"
+              placeholder="Grau de Parentesco"
+              value={f.relacao}
+              onChange={e => atualizarFamiliar(f.id, 'relacao', e.target.value)}
+            />
+            {familiares.length > 1 && (
+              <button
+                className="sf-remover"
+                onClick={() => removerFamiliar(f.id)}
               >
                 Remover
               </button>
             )}
           </div>
         ))}
+        {familiares.length < 10 && (
+          <button className="sf-adicionar" onClick={addFamiliar}>
+            + Adicionar Familiar
+          </button>
+        )}
       </div>
-      
-      {erro && <p className="mensagem-erro">{erro}</p>}
-      
-      <div className="barra-progresso">
-        <div className="progresso" style={{ width: '66%' }}></div>
+
+      {erro && <p className="sf-erro">{erro}</p>}
+
+      <div className="sf-barra">
+        <div
+          className="sf-progresso"
+          style={{ width: `${familiares.length * 10}%` }}
+        />
       </div>
-      
-      <div className="acoes-familiares">
-        <button 
-          className="botao botao-primario botao-grande"
-          onClick={handleSubmit}
-          disabled={carregando}
-        >
-          {carregando ? "Processando..." : "Continuar"}
-        </button>
-      </div>
+
+      <button
+        className="cd-botao"
+        onClick={handleSubmit}
+        disabled={carregando}
+      >
+        {carregando ? 'Processando...' : 'Começar Jornada!'}
+      </button>
     </div>
   );
 }

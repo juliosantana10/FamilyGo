@@ -1,0 +1,66 @@
+.painel-usuario {
+    background: #fff3e0;
+    border-radius: 24px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 179, 71, 0.2);
+  }
+  
+  .painel-topo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .painel-mascote {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    border: 4px solid #ffb347;
+    padding: 8px;
+  }
+  
+  .painel-nome {
+    font-size: 1.4rem;
+    color: #4b3200;
+    margin: 10px 0 2px;
+  }
+  
+  .painel-email {
+    font-size: 0.9rem;
+    color: #6d4c1b;
+    margin-bottom: 10px;
+  }
+  
+  .painel-nivel {
+    background: #ffa733;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  
+  .painel-progresso {
+    background: #fbe1c1;
+    border-radius: 10px;
+    height: 16px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  
+  .progresso-preenchido {
+    background: linear-gradient(90deg, #ffb347, #ff7f50);
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .painel-progresso-texto {
+    font-size: 0.85rem;
+    color: #6c4c1a;
+  }
+  

@@ -1,0 +1,107 @@
+.album-familiar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #fff8f0, #fff0d9);
+    border-radius: 1rem;
+    box-shadow: 0 8px 15px rgba(255, 165, 0, 0.2);
+    user-select: none;
+  }
+  
+  .card-familiar {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: var(--branco-suave);
+    border-radius: var(--borda-radius);
+    box-shadow: 0 0 10px 2px transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--bege-claro);
+    cursor: pointer;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.4s ease,
+      border-color 0.3s ease;
+  }
+  
+  /* Hover animação "pulso" para cards pendentes */
+  .card-familiar.pendente:hover {
+    transform: scale(1.1) rotate(-3deg);
+    border-color: var(--laranja);
+    box-shadow: 0 0 15px 3px var(--laranja);
+    animation: pulseGlow 2s infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 15px 3px var(--laranja);
+    }
+    50% {
+      box-shadow: 0 0 25px 6px var(--laranja);
+    }
+  }
+  
+  /* Quando foto adicionada, efeito de “conquista” */
+  .card-familiar.preenchida {
+    border-color: #32CD32;
+    box-shadow: 0 0 15px 4px #32CD32;
+    animation: shine 1.5s ease forwards;
+  }
+  
+  @keyframes shine {
+    0% {
+      filter: brightness(1);
+    }
+    50% {
+      filter: brightness(1.4);
+    }
+    100% {
+      filter: brightness(1);
+    }
+  }
+  
+  .card-familiar img.foto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--borda-radius);
+    transition: opacity 0.4s ease;
+  }
+  
+  /* Efeito para card pendente - aparência esmaecida */
+  .card-familiar.pendente img.foto {
+    filter: grayscale(70%) brightness(0.8);
+    opacity: 0.5;
+  }
+  
+  /* Texto e ícone pendente estilizados */
+  .card-familiar.pendente::before {
+    content: "📸 Adicione sua foto!";
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--laranja);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-shadow: 0 0 3px #fff;
+    pointer-events: none;
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .album-familiar {
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .card-familiar {
+      border-radius: 1.25rem;
+    }
+  }
+  

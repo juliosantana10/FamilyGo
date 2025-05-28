@@ -1,125 +1,465 @@
-:root {
-  --branco: #ffffff;
-  --branco-suave: #fef6f2;
-  --laranja: #fa7b17;
-  --verde-escuro: #229e49;
-  --marrom: #6d4c41;
-  --marrom-claro: #a1887f;
-  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --borda-radius: 1.5rem;
+@keyframes cd-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Layout geral da tela */
-.tela-cadastro {
+@keyframes cd-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cd-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes cd-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes cd-success {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.1); }
+  60% { transform: scale(0.9); }
+  80% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cd-confetti {
+  0% { transform: translateY(0) rotate(0); opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes cd-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes cd-progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.cd-tela-cheia {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.cd-tela-cadastro {
   background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 2rem 1rem;
-  min-height: 100vh;
+  height: 100vh;
   box-sizing: border-box;
+  animation: cd-fadeIn 0.8s ease-out;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Logo no topo */
-.logo-container {
-  margin-bottom: 1.5rem;
+.cd-tela-cadastro::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(250, 123, 23, 0.1) 0%, rgba(250, 123, 23, 0) 70%);
+  border-radius: 50%;
+  top: -100px;
+  right: -100px;
+  z-index: -1;
+}
+
+.cd-tela-cadastro::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(34, 158, 73, 0.1) 0%, rgba(34, 158, 73, 0) 70%);
+  border-radius: 50%;
+  bottom: -50px;
+  left: -50px;
+  z-index: -1;
+}
+
+.cd-logo-container {
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+  animation: cd-float 6s ease-in-out infinite;
 }
 
-.logo {
-  width: 160px;
+.cd-logo {
+  width: 140px;
   height: auto;
-  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
+  transition: transform var(--animacao-padrao);
 }
 
-/* Caixa do formulário */
-.cadastro-container {
-  background: white;
+.cd-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.cd-cadastro-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   border-radius: var(--borda-radius);
   padding: 1.5rem;
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
   box-shadow: var(--sombra);
+  transition: box-shadow var(--animacao-padrao), transform var(--animacao-padrao);
+  animation: cd-fadeIn 0.8s ease-out 0.2s backwards;
+  border: 2px solid transparent;
+  position: relative;
 }
 
-/* Formulário */
-.formulario-cadastro {
+.cd-cadastro-container:hover {
+  box-shadow: var(--sombra-hover);
+  transform: translateY(-5px);
+  border-color: rgba(250, 123, 23, 0.2);
+}
+
+.cd-formulario-cadastro {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
 }
 
-.campo-form {
+.cd-campo-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  transition: transform var(--animacao-padrao);
+  position: relative;
+  animation: cd-fadeIn 0.5s ease-out forwards;
+  opacity: 0;
 }
 
-.rotulo {
+.cd-campo-form:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.cd-campo-form:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.cd-campo-form:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.cd-campo-form:focus-within {
+  transform: translateX(5px);
+}
+
+.cd-campo-form:focus-within .cd-rotulo {
+  color: var(--laranja);
+  transform: translateY(-2px);
+}
+
+.cd-rotulo {
   font-weight: 600;
   color: var(--marrom);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  transition: all var(--animacao-padrao);
+  display: inline-block;
+  padding-left: 0.3rem;
 }
 
-.entrada {
+.cd-entrada {
   padding: 0.8rem 1rem;
   border: 2px solid var(--marrom-claro);
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1rem;
   width: 100%;
-  transition: border-color 0.2s;
+  transition: all var(--animacao-padrao);
+  background-color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.entrada:focus {
+.cd-entrada:focus {
   outline: none;
   border-color: var(--laranja);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(250, 123, 23, 0.2);
+  transform: translateY(-2px);
 }
 
-.opcao-mostrar {
+.cd-entrada::placeholder {
+  color: #bbaa9f;
+  opacity: 0.7;
+  transition: opacity var(--animacao-padrao);
+}
+
+.cd-entrada:focus::placeholder {
+  opacity: 0.4;
+}
+
+.cd-senha-container {
+  width: 100%;
+  position: relative;
+}
+
+.cd-opcao-mostrar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.85rem;
   color: var(--marrom);
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
+  padding-left: 0.3rem;
+  transition: color var(--animacao-padrao);
+  opacity: 0;
+  animation: cd-fadeIn 0.5s ease-out 0.8s forwards;
 }
 
-.opcao-mostrar input[type="checkbox"] {
+.cd-opcao-mostrar:hover {
+  color: var(--laranja);
+}
+
+.cd-opcao-mostrar input[type="checkbox"] {
   width: 16px;
   height: 16px;
-  accent-color: var(--verde);
+  accent-color: var(--verde-escuro);
   cursor: pointer;
+  transition: transform var(--animacao-padrao);
 }
 
-.opcao-mostrar label {
-  cursor: pointer;
+.cd-opcao-mostrar input[type="checkbox"]:hover {
+  transform: scale(1.2);
 }
 
-.botao {
+.cd-botao {
   border: none;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: bold;
+  width: 100%;
+  transition: all var(--animacao-padrao);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.botao-secundario {
-  background: linear-gradient(45deg, var(--verde), var(--verde-claro));
+.cd-botao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.8s;
+}
+
+.cd-botao:hover::before {
+  left: 100%;
+}
+
+.cd-botao:active {
+  transform: translateY(2px);
+}
+
+.cd-botao-secundario {
+  background: var(--verde-escuro);
   color: white;
+  box-shadow: 0 4px 0 #1a7a38;
+  margin-top: 0.5rem;
+  animation: cd-fadeIn 0.5s ease-out 0.8s backwards;
+}
+
+.cd-botao-secundario:hover {
+  background: var(--verde-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #1a7a38;
+}
+
+.cd-botao-secundario:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a7a38;
+}
+
+.cd-botao-secundario.cd-botao-clicado {
+  animation: cd-success 0.8s ease-out;
+  background: linear-gradient(90deg, var(--verde-escuro), var(--verde-hover), var(--verde-escuro));
+  background-size: 200% auto;
+  animation: cd-shine 1.5s linear infinite;
+}
+
+.cd-botao-primario {
+  background: var(--laranja);
+  color: white;
+  box-shadow: 0 4px 0 #d86812;
+}
+
+.cd-botao-primario:hover {
+  background: var(--laranja-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #d86812;
+}
+
+.cd-botao-grande {
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 14px;
+}
+
+.cd-botao:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cd-botao:disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 0 #1a7a38;
+}
+
+.cd-mensagem-erro {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: rgba(211, 47, 47, 0.1);
+  animation: cd-shake 0.5s ease-in-out;
+  text-align: center;
+  border-left: 3px solid #d32f2f;
+}
+
+.cd-opcoes-cadastro {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  animation: cd-fadeIn 0.8s ease-out 0.9s backwards;
+}
+
+.cd-campo-form::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  opacity: 0;
+  right: -10px;
+  top: 0;
+  background-color: rgba(34, 158, 73, 0.9);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  transform: translateX(10px);
+  transition: all var(--animacao-padrao);
+  pointer-events: none;
+  z-index: 100;
+  visibility: hidden;
+}
+
+.cd-campo-form:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.cd-confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--laranja);
+  border-radius: 50%;
+  animation: cd-confetti 4s ease-out forwards;
+  z-index: 1000;
+}
+
+.cd-confetti:nth-child(2n) {
+  background-color: var(--verde-escuro);
+  animation-delay: 0.2s;
+  animation-duration: 5s;
+}
+
+.cd-confetti:nth-child(3n) {
+  background-color: var(--marrom-claro);
+  animation-delay: 0.4s;
+  animation-duration: 3.5s;
+  width: 8px;
+  height: 8px;
+}
+
+.cd-confetti:nth-child(4n) {
+  background-color: #ffd54f;
+  animation-delay: 0.1s;
+  animation-duration: 4.2s;
+  width: 12px;
+  height: 12px;
+}
+
+.cd-forca-senha {
+  height: 4px;
+  border-radius: 2px;
+  background-color: #eee;
+  margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cd-forca-senha::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  border-radius: 2px;
+  left: 0;
+  top: 0;
+  width: 0;
+  animation: cd-progress 0.5s forwards;
+}
+
+.cd-forca-senha.cd-fraca::after {
+  background-color: #ff5252;
+  width: 30%;
+}
+
+.cd-forca-senha.cd-media::after {
+  background-color: #ffd740;
+  width: 70%;
+}
+
+.cd-forca-senha.cd-forte::after {
+  background-color: #69f0ae;
   width: 100%;
 }
 
 @media (max-width: 480px) {
-  .cadastro-container {
+  .cd-cadastro-container {
     padding: 1.5rem;
+    max-width: 90vw;
   }
+}
 
-  .entrada {
-    padding: 0.7rem;
+@media (max-height: 700px) {
+  .cd-logo {
+    width: 100px;
+  }
+  
+  .cd-cadastro-container {
+    padding: 1rem;
+  }
+  
+  .cd-entrada {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .cd-botao {
+    padding: 0.6rem;
   }
 }

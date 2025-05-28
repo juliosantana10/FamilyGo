@@ -1,212 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap');
+
+:root {
+  --laranja: #fa7b17;
+  --laranja-escuro: #a85c2c;
+  --verde-escuro: #229e49;
+  --marrom: #6d4c41;
+  --marrom-claro: #a1887f;
+  --bege-claro: #f2e9d9;
+  --branco: #fff;
+  --texto-escuro: #333;
+  --sombra: rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(120deg, var(--bege-claro), #ffe7cc, var(--bege-claro));
+  color: var(--texto-escuro);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
 .roleta-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f8f8f8;
-    font-family: 'Nunito', sans-serif;
-    position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 20px 70px;
+  background: linear-gradient(135deg, var(--bege-claro), #ffe3bd, var(--bege-claro));
+  color: var(--texto-escuro);
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.roleta text {
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  fill: white;
+  font-size: 6px;
+  user-select: none;
+}
+
+.nome-familiar {
+  font-family: 'Arial', sans-serif;
+  pointer-events: none;
+  user-select: none;
+  font-weight: bold;
+}
+
+.roleta-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 0 10px;
+}
+
+.roleta-header h1 {
+  font-size: 2.8rem;
+  margin: 0;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+  line-height: 1.1;
+}
+
+.roleta-subtitle {
+  font-size: 1.2rem;
+  margin-top: 4px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.roleta-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.roleta-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 20px 0;
+  user-select: none;
+  touch-action: manipulation;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.25));
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+}
+
+.roleta {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bege-claro);
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.15);
+  transition: transform 6.5s cubic-bezier(0.25, 0.1, 0, 1);
+  cursor: pointer;
+  overflow: visible;
+}
+
+.roleta.girando {
+  pointer-events: none;
+}
+
+.roleta svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.roleta-indicador {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 40px solid orange; /* usa laranja direto para testar */
+  z-index: 10;
+}
+
+.botoes-area {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+  color: var(--branco);
+  background: var(--laranja);
+  user-select: none;
+  min-width: 140px;
+  text-align: center;
+}
+
+button:hover:not(:disabled),
+button:focus:not(:disabled) {
+  background: var(--laranja-escuro);
+  outline: none;
+}
+
+button:disabled,
+button.desativado {
+  background: #bbaa9f88;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.botao-detalhes {
+  background: var(--verde-escuro);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+}
+
+.botao-detalhes:hover,
+.botao-detalhes:focus {
+  background: #1c6b30;
+}
+
+.sem-familiares {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px 0;
+}
+
+.botao-adicionar {
+  margin-top: 10px;
+  background: var(--marrom);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.botao-adicionar:hover,
+.botao-adicionar:focus {
+  background: var(--marrom-claro);
+}
+
+/* Loading Spinner */
+.loading-container {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--branco);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.loading-spinner {
+  border: 6px solid rgba(255, 255, 255, 0.2);
+  border-top: 6px solid var(--branco);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: girar 1.3s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes girar {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.confetes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1000;
+}
+
+.confete {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: var(--laranja);
+  opacity: 0.85;
+  border-radius: 2px;
+  animation-name: cair, rodar;
+  animation-duration: 5s, 2s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: forwards;
+  --cor: #fa7b17;
+  background-color: var(--cor);
+  filter: drop-shadow(0 0 3px var(--cor));
+}
+
+@keyframes cair {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.85;
   }
-  
-  .roleta-header {
-    background: linear-gradient(to right, #ff9966, #ff7043);
-    border-radius: 0 0 20px 20px;
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
   }
-  
-  .roleta-header h1 {
-    margin: 0;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+@keyframes rodar {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .roleta-header h1::after {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    background-image: url();
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: 8px;
+  100% {
+    transform: rotate(360deg);
   }
-  
-  .roleta-subtitle {
-    margin: 10px 0 0;
-    font-size: 16px;
-    opacity: 0.9;
-  }
-  
-  .roleta-area {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    position: relative;
-  }
-  
+}
+
+/* Responsividade */
+
+@media (max-width: 480px) {
   .roleta-wrapper {
-    position: relative;
-    width: 280px;
-    height: 280px;
-    margin: 20px auto;
+    width: 90vw;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    min-width: 120px;
+  }
+
+  .roleta-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .roleta-subtitle {
+    font-size: 1rem;
+  }
+
+  .botoes-area {
+    gap: 12px;
+  }
+
+  .roleta-container {
+    padding-bottom: 90px;
+  }
+}
+
+@media (max-width: 320px) {
+  .roleta-header h1 {
+    font-size: 1.8rem;
   }
   
-  .roleta {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    transition: transform 5s cubic-bezier(0.17, 0.67, 0.2, 0.99);
-    position: relative;
-    overflow: hidden;
+  button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    min-width: 100px;
   }
-  
-  .roleta svg {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .roleta-indicador {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 25px solid #ff7043;
-    z-index: 10;
-  }
-  
-  .botao-girar, .botao-iniciar-desafio, .botao-adicionar {
-    background-color: #ff7043;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 28px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(255, 112, 67, 0.3);
-    transition: all 0.3s ease;
-  }
-  
-  .botao-girar:hover, .botao-iniciar-desafio:hover, .botao-adicionar:hover {
-    background-color: #ff5722;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(255, 112, 67, 0.4);
-  }
-  
-  .botao-girar:active, .botao-iniciar-desafio:active, .botao-adicionar:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 4px rgba(255, 112, 67, 0.4);
-  }
-  
-  .botao-girar.desativado {
-    background-color: #cccccc;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-  
-  .familiar-selecionado {
-    text-align: center;
-    margin-top: 20px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 300px;
-    animation: aparecer 0.5s ease-out;
-  }
-  
-  .familiar-selecionado h2 {
-    color: #ff7043;
-    margin: 0 0 15px;
-    font-size: 22px;
-  }
-  
-  .sem-familiares {
-    text-align: center;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-  }
-  
-  .sem-familiares p {
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  @keyframes aparecer {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .confetes {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 100;
-  }
-  
-  .confete {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: var(--cor);
-    opacity: 0.7;
-    animation: cair 4s ease-in infinite;
-  }
-  
-  @keyframes cair {
-    0% {
-      transform: translateY(-100px) rotate(0deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @media (max-width: 400px) {
-    .roleta-wrapper {
-      width: 250px;
-      height: 250px;
-    }
-    
-    .roleta-header h1 {
-      font-size: 22px;
-    }
-    
-    .botao-girar, .botao-iniciar-desafio, .botao-adicionar {
-      padding: 10px 24px;
-      font-size: 15px;
-    }
-  }
-  
-  .roleta.girando {
-    box-shadow: 0 0 15px rgba(255, 112, 67, 0.6);
-  }
+}

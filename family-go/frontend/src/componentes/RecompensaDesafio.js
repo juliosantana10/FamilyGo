@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import BarraNavegacao from '../componentes/BarraNavegacao';
+import { useUsuario } from '../contextos/UserContext';
+import Navbar from '../componentes/Navbar';
 import '../css/RecompensaDesafio.css';
 
 const desafiosDisponiveis = [
@@ -120,7 +121,7 @@ function RecompensaDesafio() {
         Compartilhar Momento
       </button>
       
-      <BarraNavegacao paginaAtiva="home" />
+      <Navbar paginaAtiva="home" />
     </div>
   );
 }

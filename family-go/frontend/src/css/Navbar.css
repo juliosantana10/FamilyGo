@@ -1,0 +1,74 @@
+.navbar {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem 1rem 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+    box-sizing: border-box;
+  }
+  
+  .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0 0.4rem;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  /* mantém nowrap para todos por padrão */
+  }
+  
+  /* NavLink específico para Recompensa, quebra linha e mais largura */
+  .nav-link.recompensa {
+    white-space: normal;    /* permite quebra de linha */
+    max-width: 90px;        /* aumenta largura só para recompensa */
+    text-align: center;     /* centraliza o texto quando quebrar */
+  }
+  
+  .nav-link .icon {
+    font-size: 1rem;
+    margin-bottom: 0.15rem;
+  }
+  
+  .nav-link.active {
+    color: #E67E22;
+  }
+  
+  .nav-center-btn {
+    position: relative;
+    top: -10px;
+    width: 60px;
+    height: 60px;
+    background-color: #E67E22;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 28px;
+    line-height: 1;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+    margin: 0 1rem;
+  }
+  
+  .nav-center-btn .plus-icon {
+    font-size: 28px;
+    line-height: 1;
+  }
+  

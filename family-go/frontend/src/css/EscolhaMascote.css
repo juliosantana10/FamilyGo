@@ -1,116 +1,205 @@
-.tela-mascote {
-    background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+:root {
+  --branco: #ffffff;
+  --branco-suave: #fef6f2;
+  --laranja: #fa7b17;
+  --laranja-hover: #ff9034;
+  --verde-escuro: #229e49;
+  --verde-hover: #2abe5a;
+  --marrom: #6d4c41;
+  --marrom-claro: #a1887f;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sombra-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --borda-radius: 1.5rem;
+  --animacao-padrao: 0.3s ease-in-out;
+}
+
+@keyframes cd-fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cd-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cd-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.cd-tela-cheia {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, var(--branco) 0%, var(--branco-suave) 100%);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: cd-fadeIn 0.8s ease-out;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.cd-logo-container {
+  margin-bottom: 2rem;
+  animation: cd-float 6s ease-in-out infinite;
+}
+
+.cd-logo {
+  max-width: 180px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
+  transition: transform var(--animacao-padrao);
+  cursor: pointer;
+}
+
+.cd-logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.titulo-mascote {
+  color: var(--marrom);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  user-select: none;
+  animation: cd-fadeIn 1s ease forwards;
+}
+
+.opcoes-mascote {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.opcao-mascote {
+  width: 120px;
+  height: 120px;
+  background-color: white;
+  border-radius: var(--borda-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: pointer;
+  border: 3px solid transparent;
+  box-shadow: var(--sombra);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  animation: cd-fadeIn 0.6s ease forwards;
+}
+
+.opcao-mascote:hover {
+  transform: translateY(-8px) scale(1.05);
+  border-color: var(--laranja-hover);
+  box-shadow: var(--sombra-hover);
+}
+
+.opcao-mascote.selecionado {
+  border-color: var(--laranja);
+  background-color: rgba(250, 123, 23, 0.1);
+  animation: cd-pulse 2s infinite;
+  box-shadow: 0 0 15px 3px rgba(250, 123, 23, 0.4);
+}
+
+.opcao-mascote img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
+.campo-nome-familia {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.cd-entrada {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid var(--marrom-claro);
+  border-radius: 12px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  outline: none;
+}
+
+.cd-entrada:focus {
+  border-color: var(--laranja);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(250, 123, 23, 0.3);
+  transform: translateY(-2px);
+}
+
+.cd-entrada::placeholder {
+  color: #bbaa9f;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.cd-entrada:focus::placeholder {
+  opacity: 0.4;
+}
+
+.mensagem-erro {
+  color: #d32f2f;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+  user-select: none;
+  animation: cd-fadeIn 0.5s ease forwards;
+}
+
+.barra-progresso {
+  width: 100%;
+  max-width: 400px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.progresso {
+  height: 100%;
+  background-color: var(--laranja);
+  transition: width 0.4s ease-in-out;
   }
   
-  .logo-pequena {
-    max-width: 180px;
-    margin-bottom: 1.5rem;
+  .cd-botao {
+  padding: 0.9rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: var(--borda-radius);
+  background-color: var(--verde-escuro);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--sombra);
+  transition: background-color var(--animacao-padrao), transform var(--animacao-padrao), box-shadow var(--animacao-padrao);
   }
   
-  .titulo-mascote {
-    color: var(--marrom);
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 700;
+  .cd-botao:hover {
+  background-color: var(--verde-hover);
+  transform: scale(1.05);
+  box-shadow: var(--sombra-hover);
   }
   
-  .opcoes-mascote {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .opcao-mascote {
-    width: 120px;
-    height: 120px;
-    background-color: white;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    cursor: pointer;
-    border: 3px solid transparent;
-    box-shadow: var(--sombra);
-    transition: transform 0.2s, border-color 0.2s;
-  }
-  
-  .opcao-mascote:hover {
-    transform: translateY(-5px);
-  }
-  
-  .opcao-mascote.selecionado {
-    border-color: var(--laranja);
-    background-color: rgba(255, 123, 37, 0.05);
-  }
-  
-  .opcao-mascote img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-  
-  .campo-nome-familia {
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 1.5rem;
-  }
-  
-  .entrada-nome-familia {
-    text-align: center;
-    font-size: 1.1rem;
-  }
-  
-  .barra-progresso {
-    width: 100%;
-    max-width: 400px;
-    height: 8px;
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    margin: 1.5rem 0;
-    overflow: hidden;
-  }
-  
-  .progresso {
-    height: 100%;
-    background: linear-gradient(to right, var(--laranja), var(--laranja-claro));
-    border-radius: 4px;
-  }
-  
-  .tela-mascote .botao-grande {
-    margin-top: 1rem;
-    min-width: 200px;
-  }
-  
-  @media (max-width: 768px) {
-    .opcoes-mascote {
-      gap: 1rem;
-    }
-    
-    .opcao-mascote {
-      width: 100px;
-      height: 100px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .titulo-mascote {
-      font-size: 1.3rem;
-    }
-    
-    .opcoes-mascote {
-      gap: 0.8rem;
-    }
-    
-    .opcao-mascote {
-      width: 90px;
-      height: 90px;
-    }
+  .cd-botao:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
   }

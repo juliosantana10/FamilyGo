@@ -4,6 +4,7 @@ import '../css/EscolhaMascote.css';
 import ursinhoMascote from '../familyImagens/ursinhoMascote.png';
 import girafa from '../familyImagens/girafa.jpg';
 import hipopotamo from '../familyImagens/hipopotamo.jpg';
+import logo from '../familyImagens/logo.png';
 
 function EscolhaMascote() {
   const [mascoteSelecionado, setMascoteSelecionado] = useState(null);
@@ -15,7 +16,7 @@ function EscolhaMascote() {
 
   const mascotes = [
     { id: 'urso', nome: 'Urso', imagem: ursinhoMascote },
-    { id: 'girafa', nome: 'Girafa', imagem: girafa},
+    { id: 'girafa', nome: 'Girafa', imagem: girafa },
     { id: 'hipopotamo', nome: 'Hipopótamo', imagem: hipopotamo }
   ];
 
@@ -28,19 +29,19 @@ function EscolhaMascote() {
       setErro('Por favor, selecione um mascote.');
       return;
     }
-    
+
     if (!nomeFamilia.trim()) {
       setErro('Por favor, informe o nome da sua família.');
       return;
     }
-    
+
     try {
       setErro('');
       setCarregando(true);
-      
+
       localStorage.setItem('familyGoMascote', mascoteSelecionado);
       localStorage.setItem('familyGoNomeFamilia', nomeFamilia);
-      
+
       navigate('/selecionar-familiares');
     } catch (error) {
       console.error('Erro ao salvar mascote:', error);
@@ -51,45 +52,45 @@ function EscolhaMascote() {
   };
 
   return (
-    <div className="tela-cheia tela-mascote">
-      <div className="logo-container">
-        <img src="/assets/images/logo.svg" alt="Family Go" className="logo-pequena" />
+    <div className="cd-tela-cheia tela-mascote cd-fadeIn">
+      <div className="cd-logo-container">
+        <img src={logo} alt="Family Go" className="cd-logo" />
       </div>
-      
+
       <h1 className="titulo-mascote">
         Escolha o mascote que a sua família criará:
       </h1>
-      
+
       <div className="opcoes-mascote">
         {mascotes.map(mascote => (
-          <div 
+          <div
             key={mascote.id}
-            className={`opcao-mascote ${mascoteSelecionado === mascote.id ? 'selecionado' : ''}`}
+            className={`opcao-mascote ${mascoteSelecionado === mascote.id ? 'selecionado cd-pulse' : ''}`}
             onClick={() => selecionarMascote(mascote.id)}
           >
             <img src={mascote.imagem} alt={mascote.nome} />
           </div>
         ))}
       </div>
-      
+
       <div className="campo-form campo-nome-familia">
         <input
           type="text"
-          className="entrada entrada-nome-familia"
+          className="entrada entrada-nome-familia cd-entrada"
           placeholder="Nome da Família"
           value={nomeFamilia}
           onChange={(e) => setNomeFamilia(e.target.value)}
         />
       </div>
-      
+
       {erro && <p className="mensagem-erro">{erro}</p>}
-      
+
       <div className="barra-progresso">
         <div className="progresso" style={{ width: '33%' }}></div>
       </div>
-      
-      <button 
-        className="botao botao-primario botao-grande"
+
+      <button
+        className="botao botao-primario botao-grande cd-botao"
         onClick={handleSubmit}
         disabled={carregando}
       >

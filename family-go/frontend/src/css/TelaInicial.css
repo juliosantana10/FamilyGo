@@ -43,7 +43,7 @@ body {
 }
 
 .logo-container {
-  margin-bottom: 2.5rem;
+  margin-bottom: 4rem; /* Aumentado para separar mais da logo do urso */
 }
 
 .logo {
@@ -85,11 +85,15 @@ body {
   .logo {
     max-width: 180px;
   }
-  
+
+  .logo-container {
+    margin-bottom: 3rem; /* Um pouco menor para telas médias */
+  }
+
   .mascote-inicial {
     max-width: 220px;
   }
-  
+
   .botao-grande {
     padding: 0.8rem 2rem;
     font-size: 1.1rem;
@@ -100,13 +104,65 @@ body {
   .logo {
     max-width: 150px;
   }
-  
+
+  .logo-container {
+    margin-bottom: 2.5rem; /* Menor ainda em telas pequenas */
+  }
+
   .mascote-inicial {
     max-width: 180px;
   }
-  
+
   .botao-grande {
     padding: 0.7rem 1.8rem;
     font-size: 1rem;
+  }
+
+  .tela-inicial.animada {
+    background: linear-gradient(135deg, #fffaf0 0%, #f0f0eb 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animar-logo {
+    animation: flutuar 3s ease-in-out infinite;
+  }
+
+  .animar-mascote {
+    animation: entradaMascote 1s ease forwards;
+    opacity: 0;
+  }
+
+  .animar-botao {
+    animation: pulse 2s infinite;
+  }
+
+  .fala-mascote {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--marrom);
+    background: #fff4e6;
+    padding: 0.8rem 1.2rem;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+    text-align: center;
+    max-width: 280px;
+  }
+
+  @keyframes flutuar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes entradaMascote {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
   }
 }

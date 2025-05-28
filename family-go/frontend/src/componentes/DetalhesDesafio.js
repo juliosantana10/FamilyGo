@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import BarraNavegacao from '../componentes/BarraNavegacao';
+import Navbar from '../componentes/Navbar';
 import '../css/DetalhesDesafio.css';
 
 function DetalhesDesafio() {
@@ -85,14 +85,14 @@ function DetalhesDesafio() {
         ) : (
           <div className="sem-desafio">
             <p>Nenhum desafio disponível.</p>
-            <button className="botao-voltar" onClick={() => navigate('/roleta-desafios')}>
+            <button className="botao-voltar" onClick={() => navigate('/roleta-desafios/1')}>
               Voltar para a Roleta
             </button>
           </div>
         )}
       </div>
 
-      <BarraNavegacao />
+      <Navbar />
     </div>
   );
 }
